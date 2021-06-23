@@ -1,0 +1,31 @@
+{
+  "name": "user-likes-nodejs-api",
+  "version": "1.0.0",
+  "description": "API in Node Js, Typescript, PostgresSql",
+  "main": "dist/src/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gsapkar/user-likes-nodejs-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gsapkar/user-likes-nodejs-api/issues"
+  },
+  "homepage": "https://github.com/gsapkar/user-likes-nodejs-api#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.12",
+    "@types/node": "^15.12.4",
+    "tslint": "^6.1.3",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
