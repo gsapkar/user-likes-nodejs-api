@@ -65,7 +65,7 @@ There is an different environment for testing only, which spins up two different
 This command runs the **(integration)** tests for the API:
 
 ```
-$ npm run docker:test:up
+$ npm run docker:test
 ```
 
 ### Stop the test server
