@@ -22,7 +22,15 @@
     "type": "git",
     "url": "git+https://github.com/gsapkar/user-likes-nodejs-api.git"
   },
-  "keywords": [],
+  "keywords": [
+    "TypeScript",
+    "express",
+    "nodejs",
+    "eslint",
+    "Docker",
+    "postgresql",
+    "prisma"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
