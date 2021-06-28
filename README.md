@@ -181,3 +181,13 @@ The environment variables PORT and DATABASE_URL for dev and test are different, 
 
 When starting the containers with docker-compose we must be sure that the database container is up and runing before the application container is started.
 There is nice utility script to do that, called **[docker-compose-wait](https://github.com/ufoscout/docker-compose-wait)**
+
+## VI TODO
+
+There is a lot of space for improving this project.
+
+- **[Swagger](https://www.npmjs.com/package/swagger-ui-express)** can be added for documenting and testing the API endpoints.
+- **[Morgan](https://www.npmjs.com/package/morgan)** a request logger middleware
+- Impovements with Docker: Dev environment without nodemon watcher, with only Postgres container started
+- Dependency injection library
+- Unit tests for the services
