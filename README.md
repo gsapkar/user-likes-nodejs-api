@@ -50,7 +50,7 @@ Running the above commands results in
 - 🌏**API Server** running at `http://localhost:5000`
 - 🛢️**PostgreSQL Server** running at `postgres://localhost:5434`
 
-It's possible the first time of running this command that the Prisma migrations are not executed.
+**Troubleshoot**: It's possible the **first** time of running the `$ npm run docker:dev:up` command that the Prisma migrations are not executed, and there are errors in the container logs.
 So after the containers are started and the database server is ready execute in terminal:
 
 ```
@@ -75,7 +75,7 @@ This command runs the **(integration)** tests for the API:
 $ npm run docker:test
 ```
 
-It's possible the first time of running this command that the Prisma migrations are not executed.
+**Troubleshoot**: It's possible the **first** time of running the `$ npm run docker:test` command that the Prisma migrations are not executed, and there are errors in the container logs.
 So after the containers are started and the database server is ready execute in terminal:
 
 ```
@@ -128,12 +128,16 @@ User->>API: /user/:id/like
 ### Database
 
 When analyzing the business domain, we can conclude that we need two tables **User** and **UserLikes**.
+
 The User table contains the records for the registered users.
-The UserLikes table holds data for the user likes. The userId and likedByUserId fields reference the id filed in the User table.
+
+The UserLikes table holds data for the user likes.
+The userId and likedByUserId fields reference the id filed in the User table.
+
 Also the combination userId and likedByUserId should be unique (one user can't be liked more than once from a same user) and thats why **unique_likes** index is added.
 
 This means we have relational data model and thats why PostgreSQL is the database of choice.
-We can make , the constraints on a database level, not only in the code, which makes our architexture more resilient to errors.
+We can make , the constraints on a database level, not only in the code, which makes our architecture more resilient to errors.
 
 This is the database diagram:
 [![Db diagram](https://user-images.githubusercontent.com/5286071/123693517-7402e300-d858-11eb-8669-bfee509b28e8.png 'Db diagram')](https://user-images.githubusercontent.com/5286071/123693517-7402e300-d858-11eb-8669-bfee509b28e8.png 'Db diagram')
