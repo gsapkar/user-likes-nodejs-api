@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["orderByRelation"]
+}
+
+model User {
+  id       Int         @id @default(autoincrement())
+  username String      @unique
+  password String
+  likes    UserLikes[] @relation("LikedFromUser")
+  likedBy  UserLikes[] @relation("LikedByUser")
+}
+
+model UserLikes {
+  id            Int      @id @default(autoincrement())
+  user          User     @relation("LikedFromUser", fields: [userId], references: [id])
+  userId        Int
+  likedByUser   User     @relation("LikedByUser", fields: [likedByUserId], references: [id])
+  likedByUserId Int
+  createdAt     DateTime @default(now())
+
+  @@unique([userId, likedByUserId], name: "unique_likes")
+}
