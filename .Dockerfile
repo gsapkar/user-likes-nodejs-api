@@ -6,11 +6,11 @@ COPY package.json tsconfig.json ./
 COPY src ./src
 COPY prisma ./prisma/
 
+RUN npm install 
+
 ## Downloading Wait script so Postgres can start
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.7.2/wait /wait
 RUN chmod +x /wait
-
-RUN npm install 
 
 RUN npx prisma generate
 
