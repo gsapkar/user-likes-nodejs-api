@@ -8,10 +8,11 @@
     "lib": ["es2015"],                             /* Specify library files to be included in the compilation. */
     "sourceMap": true,                     /* Generates corresponding '.map' file. */
     // "outFile": "./",                       /* Concatenate and emit output to single file. */
-    "outDir": "dist/src",                        /* Redirect output structure to the directory. */
-
+    "outDir": "./build",                        /* Redirect output structure to the directory. */
+    "rootDir": "./src",
     /* Strict Type-Checking Options */
-    "strict": true,                           /* Enable all strict type-checking options. */
+    "strictNullChecks": true,     
+    "noUnusedLocals": true,                     
     /* Module Resolution Options */
     "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
     "esModuleInterop": true,                  /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
