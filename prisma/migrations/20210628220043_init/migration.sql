@@ -1,17 +1,11 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "User" (
+    "id" SERIAL NOT NULL,
+    "username" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
 
-  - You are about to drop the `Like` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "Like" DROP CONSTRAINT "Like_likedById_fkey";
-
--- DropForeignKey
-ALTER TABLE "Like" DROP CONSTRAINT "Like_userId_fkey";
-
--- DropTable
-DROP TABLE "Like";
+    PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "UserLikes" (
@@ -22,6 +16,12 @@ CREATE TABLE "UserLikes" (
 
     PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User.username_unique" ON "User"("username");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "unique_likes" ON "UserLikes"("userId", "likedByUserId");
 
 -- AddForeignKey
 ALTER TABLE "UserLikes" ADD FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

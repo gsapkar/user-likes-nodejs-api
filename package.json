@@ -11,7 +11,7 @@
     "migrate:dev": "dotenv -e dev.env -- npx prisma migrate dev",
     "docker:dev:up": "npm run build && docker-compose -f docker-compose.yml up && npm run migrate:dev",
     "docker:dev:down": "docker-compose -f docker-compose.yml down",
-    "migrate:test:init": "dotenv -e test.env -- npx prisma migrate dev --name postgres-init",
+    "migrate:test:init": "dotenv -e test.env -- npx prisma migrate dev",
     "docker:test:up": "docker-compose -f docker-compose.test.yml up -d",
     "docker:test:down": "docker-compose -f docker-compose.test.yml down",
     "docker:test": "npm run build && npm run docker:test:up && npm run migrate:test:init && jest -i",
