@@ -50,6 +50,13 @@ Running the above commands results in
 - 🌏**API Server** running at `http://localhost:5000`
 - 🛢️**PostgreSQL Server** running at `postgres://localhost:5434`
 
+It's possible the first time of running this command that the Prisma migrations are not executed.
+So after the containers are started and the database server is ready execute in terminal:
+
+```
+$ npm run migrate:dev
+```
+
 ### Stop the development server
 
 The application and the database images are stopped with the command:
@@ -66,6 +73,13 @@ This command runs the **(integration)** tests for the API:
 
 ```
 $ npm run docker:test
+```
+
+It's possible the first time of running this command that the Prisma migrations are not executed.
+So after the containers are started and the database server is ready execute in terminal:
+
+```
+$ npm run migrate:test:init
 ```
 
 ### Stop the test server
