@@ -1,7 +1,5 @@
-version: "3"
+version: '3'
 networks:
-  # Different network name for tests then the default
-  # so the test and dev containers can run in paralel
   test:
     driver: bridge
 services:
@@ -22,7 +20,7 @@ services:
       WAIT_SLEEP_INTERVAL: 30
       WAIT_HOST_CONNECT_TIMEOUT: 30
     ports:
-      - "5500:5000"
+      - '5500:5000'
     volumes:
       - ./src:/usr/app/src
     networks:
@@ -33,7 +31,7 @@ services:
     container_name: postgres-test
     image: postgres:12.7
     ports:
-      - "5438:5432"
+      - '5438:5432'
     volumes:
       - ./postgresdata:/var/lib/postgresql/data
     restart: always
