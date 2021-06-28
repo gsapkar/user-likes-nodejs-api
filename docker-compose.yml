@@ -1,0 +1,40 @@
+version: "3"
+services:
+  user-likes:
+    container_name: user-likes
+    build:
+      context: .
+      dockerfile: .Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://postgres:newPassword@postgres:5432/user-likes-db
+      NODE_ENV: development
+      JWT_SECRET: testsecret
+      PORT: 5000
+      WAIT_HOSTS: postgres:5432
+      WAIT_HOSTS_TIMEOUT: 300
+      WAIT_SLEEP_INTERVAL: 30
+      WAIT_HOST_CONNECT_TIMEOUT: 30
+    ports:
+      - "5000:5000"
+      - "9229:9229"
+    volumes:
+      - ./src:/usr/app/src
+      - ./nodemon.json:/usr/app/nodemon.json
+    command: npm run dev
+
+  postgres:
+    container_name: postgres
+    image: postgres:12.7
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./postgresdata:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: newPassword
+      POSTGRES_DB: user-likes-db
+volumes:
+  db-data:

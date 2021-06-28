@@ -1,0 +1,47 @@
+version: "3"
+networks:
+  # Different network name for tests then the default
+  # so the test and dev containers can run in paralel
+  test:
+    driver: bridge
+services:
+  user-likes-test:
+    container_name: user-likes-test
+    build:
+      context: .
+      dockerfile: .Dockerfile
+    depends_on:
+      - postgres-test
+    environment:
+      DATABASE_URL: postgres://postgres:newPassword@postgres-test:5432/user-likes-test-db
+      NODE_ENV: test
+      PORT: 5500
+      JWT_SECRET: testsecret
+      WAIT_HOSTS: postgres:5432
+      WAIT_HOSTS_TIMEOUT: 300
+      WAIT_SLEEP_INTERVAL: 30
+      WAIT_HOST_CONNECT_TIMEOUT: 30
+    ports:
+      - "5500:5000"
+    volumes:
+      - ./src:/usr/app/src
+    networks:
+      - test
+    command: npm run start
+
+  postgres-test:
+    container_name: postgres-test
+    image: postgres:12.7
+    ports:
+      - "5438:5432"
+    volumes:
+      - ./postgresdata:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: newPassword
+      POSTGRES_DB: user-likes-test-db
+    networks:
+      - test
+volumes:
+  db-data:
